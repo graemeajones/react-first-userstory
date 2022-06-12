@@ -17,33 +17,32 @@ div.CardContainer {
 /* Card rulesets */
 
 div.Card {
+  /* Appearance */
   border: 0px;
   border-radius: 5px;
   background: White;
   box-shadow: 4px 4px 8px 4px rgba(70,70,70,0.3);
   transition: all 0.25s ease;
+
+  /* Position: */
   position: relative;
 }
 
 /* CardWithHover rulesets */
 
-div.Card.CardHover {
+div.Card.CardHover { 
+  position: relative;
   transform: translateY(-5px);
   box-shadow: 5px 10px 20px 4px rgba(70,70,70,0.5);
-}
-
-/* Render Card hover using React i.e. toggle CSS class CardHover on OnMouseEnter and onMouseLeave events
-i.e. don't use because 
-div.Card:hover {
-  transform: translateY(-5px);
-  box-shadow: 5px 10px 20px 4px rgba(70,70,70,0.5);
-}
-*/
+} /* Don't use CSS hover, use React
 
 /* CardWithFavourite rulesets */
 
 div.Card > div.favourite {
+  /* Appearance */
   font-size: 90%;
+
+  /* Position */
   position: absolute;
   top: 5px;
   right: 5px;
