@@ -5,7 +5,7 @@
 div.ActionTray {
   /* Appearance */
   margin: 0px;
-  padding: 10px 10px;
+  padding: 10px;
 
   /* Layout */
   display: flex;
@@ -40,15 +40,18 @@ button.Action { border: 1px solid rgba(0,0,0,0.1); }
 button.Action img { filter: opacity(0.1); }
 button.Action p { color: rgba(0,0,0,0.2); }
 
-/* Action appearance hover over modal or card */
-div.Card:hover button.Action,
-main.ModalPane:hover button.Action { border: 1px solid rgba(0,0,0,0.3); }
-div.Card:hover button.Action img,
-main.ModalPane:hover button.Action img { filter: opacity(0.3); }
-div.Card:hover button.Action p,
-main.ModalPane:hover button.Action p { color: rgba(0,0,0,0.3); }
+/* Action appearance when ActionTray (or context) hovered */
+main.ModalPane:hover button.Action:not(:hover),
+div.Card.CardHover button.Action:not(:hover),
+div.ActionTray:hover button.Action:not(:hover) { border: 1px solid rgba(0,0,0,0.4); }
+main.ModalPane:hover button.Action:not(:hover) img,
+div.Card.CardHover button.Action:not(:hover) img,
+div.ActionTray:hover button.Action:not(:hover) img { filter: opacity(0.4); }
+main.ModalPane:hover button.Action:not(:hover) p,
+div.Card.CardHover button.Action:not(:hover) p,
+div.ActionTray:hover button.Action:not(:hover) p { color: rgba(0,0,0,0.4); }
 
 /* Action appearance hover over button */
-div.ActionTray:hover button.Action:hover { border: 1px solid rgba(0,0,0,0.8); }
-div.ActionTray:hover button.Action:hover img { filter: opacity(0.8); }
-div.ActionTray:hover button.Action:hover p { color: rgba(0,0,0,0.8); }
+button.Action:hover { border: 1px solid rgba(0,0,0,0.8); }
+button.Action:hover img { filter: opacity(0.8); }
+button.Action:hover p { color: rgba(0,0,0,0.8); }

@@ -12,14 +12,14 @@ export function CardContainer({ children, className }) {
   );
 }
 
-export function Card({ children, onClick, isHovering }) {
+export function Card({ children, onClick, isParentHovering }) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Context -------------------------------------
   // Methods -------------------------------------
   // View ----------------------------------------
   return (
-    <div className={"Card " + (isHovering && "CardHover")} onClick={onClick}>
+    <div className={"Card " + (isParentHovering && "CardHover")} onClick={onClick}>
       {children}
     </div>
   );
@@ -40,14 +40,14 @@ export function CardWithHover({ children, onClick }) {
   );
 }
 
-export function CardWithFavourite({ children, onClick, isFavourite, unFavourite }) {
+export function CardWithFavourite({ children, onClick, isFavourite, unFavourite, isParentHovering }) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Context -------------------------------------
   // Methods -------------------------------------
   // View ----------------------------------------
   return (
-    <CardWithHover onClick={onClick}>
+    <Card onClick={onClick} isParentHovering={isParentHovering}>
       {
         isFavourite && (
           <div className="favourite" onClick={unFavourite}>
@@ -56,6 +56,6 @@ export function CardWithFavourite({ children, onClick, isFavourite, unFavourite 
         )
       }
       {children}
-    </CardWithHover>
+    </Card>
   );
 }

@@ -3,10 +3,9 @@
 /* -------------------------------------------- */
 
 div.ToolTip {
-  position: relative;
 }
 
-div.ToolTip > div.Card {
+div.ToolTip div.ToolTipMessage {
   /* Appearance */
   min-width: 100px;
   padding: 5px;
@@ -18,7 +17,4 @@ div.ToolTip > div.Card {
 
   /* Position */
   position: absolute;
-  top: 35px;
-  left: -33px;
-  z-index: 2;
 }

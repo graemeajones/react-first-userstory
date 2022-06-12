@@ -16,7 +16,7 @@ export default function OnHover({ children }) {
     >
       {
         React.Children.map(children, (child) => {
-          return React.cloneElement(child, { isHovering });
+          return React.cloneElement(child, { isParentHovering: isHovering });
          })
       }
     </div>

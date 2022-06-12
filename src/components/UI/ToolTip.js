@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState,useRef,useEffect } from 'react';
 import { Card } from './Card.js';
 import './ToolTip.css';
 
 
 export default function ToolTip({ children, message }) {
+  // Properies -----------------------------------
+  // let widthToolTip = 36; // Initially, the width value of the closed Action
+  let widthMessage = 100; // Initially, the min-width value of ToolTip message
+
   // Hooks ---------------------------------------
   const [isHovering, setIsHovering] = useState(false);
+  const refToolTip = useRef(null);
+  const refMessage = useRef(null);
+  
+  useEffect(() => {
+  }, [refToolTip,refMessage]);
 
   // Methods -------------------------------------
   let startToolTipTimer; // Don't start ToolTip straight away
@@ -30,15 +39,22 @@ export default function ToolTip({ children, message }) {
       className="ToolTip"
       onMouseEnter={startToolTip}
       onMouseLeave={clearToolTip}
+      ref={refToolTip}
     >
+      {children}
       {
         isHovering && (
           <Card>
-            <p>{ message }</p>
+            <div
+              className="ToolTipMessage"
+              ref={refMessage}
+              style={{ transform: `translate(${0.5*(refToolTip.current.offsetWidth-widthMessage)}px,3px)` }}
+            >
+              <p>[{refToolTip.current.offsetWidth}] { message }</p>
+            </div>
           </Card>
         )
       }
-      { children }
     </div>
   );
 }
