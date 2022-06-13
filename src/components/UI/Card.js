@@ -1,5 +1,5 @@
-import OnHover from './OnHover.js';
 import { IconRedHeart } from './Icons.js';
+import OnHover from './OnHover.js';
 import ToolTip from './ToolTip.js';
 import './Card.css';
 
@@ -25,21 +25,6 @@ export function Card({ children, onClick, isParentHovering }) {
   );
 }
 
-export function CardWithHover({ children, onClick }) {
-  // Properties ----------------------------------
-  // Hooks ---------------------------------------
-  // Context -------------------------------------
-  // Methods -------------------------------------
-  // View ----------------------------------------
-  return (
-    <OnHover>
-      <Card onClick={onClick}>
-        {children}
-      </Card>
-    </OnHover>
-  );
-}
-
 export function CardWithFavourite({ children, onClick, isFavourite, unFavourite, isParentHovering }) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
@@ -51,7 +36,9 @@ export function CardWithFavourite({ children, onClick, isFavourite, unFavourite,
       {
         isFavourite && (
           <div className="favourite" onClick={unFavourite}>
-            <ToolTip message="Click to unfavourite"><IconRedHeart /></ToolTip>
+            <OnHover>
+              <ToolTip message="Click to unfavourite"><IconRedHeart /></ToolTip>
+            </OnHover>
           </div>
         )
       }
