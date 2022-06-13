@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Modal from '../UI/Modal.js';
+import OnHover from '../UI/OnHover.js';
 import ToolTip from '../UI/ToolTip.js';
 import { ActionYes } from '../UI/Actions.js';
 
@@ -15,9 +16,11 @@ export default function MyAssessments() {
   // Methods -------------------------------------
   // View ----------------------------------------
   actions.push(
-    <ToolTip key="ActionYes" message="Click to dismiss modal">
-      <ActionYes withText onClick={() => setShowModal(false)}/>
-    </ToolTip>
+    <OnHover>
+      <ToolTip key="ActionYes" message="Click to dismiss modal">
+        <ActionYes withText onClick={() => setShowModal(false)}/>
+      </ToolTip>
+    </OnHover>
   );
 
   return (

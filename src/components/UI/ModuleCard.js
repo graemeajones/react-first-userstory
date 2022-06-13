@@ -35,20 +35,28 @@ export default function ModuleCard({module,handlers}) {
             <ActionTray>
               {module.isSubscribed
                 ?
-                <ToolTip message="Click to remove module to favourites">
-                  <ActionUnsubscribe onClick={() => handlers.handleUnsubscribe(module.ModuleID)} />
-                </ToolTip>
+                <OnHover>
+                  <ToolTip message="Click to remove module to favourites">
+                    <ActionUnsubscribe onClick={() => handlers.handleUnsubscribe(module.ModuleID)} />
+                  </ToolTip>
+                </OnHover>
                 :
-                <ToolTip message="Click to add module to favourites">
-                  <ActionSubscribe onClick={() => handlers.handleSubscribe(module.ModuleID)} />
-                </ToolTip>
+                <OnHover>
+                  <ToolTip message="Click to add module to favourites">
+                    <ActionSubscribe onClick={() => handlers.handleSubscribe(module.ModuleID)} />
+                  </ToolTip>
+                </OnHover>
               }
-              <ToolTip message="Click to modify module details">
-                <ActionModify onClick={handlers.handleModify} />
-              </ToolTip>
-              <ToolTip message="Delete module from list">
-                <ActionDelete onClick={() => handlers.handleDelete(module.ModuleID)} />
-              </ToolTip>
+              <OnHover>
+                <ToolTip message="Click to modify module details">
+                  <ActionModify onClick={handlers.handleModify} />
+                </ToolTip>
+              </OnHover>
+              <OnHover>
+                <ToolTip message="Delete module from list">
+                  <ActionDelete onClick={() => handlers.handleDelete(module.ModuleID)} />
+                </ToolTip>
+              </OnHover>
             </ActionTray>
           </div>
         </div>
