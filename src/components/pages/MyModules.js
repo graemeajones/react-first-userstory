@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { CardContainer } from '../UI/Card.js';
 import ModuleCard from '../UI/ModuleCard.js';
-import OnHover from '../UI/OnHover.js';
 import ToolTip from '../UI/ToolTip.js';
 import { ActionTray, ActionYes, ActionNo, ActionFavourites, ActionListAll } from '../UI/Actions.js';
 import Modal from '../UI/Modal.js';
 import initialListOfModules from '../../data/modules.js';
-
+import './MyModules.css';
 
 export default function MyModules() {
   // Properties ----------------------------------
@@ -45,16 +44,12 @@ export default function MyModules() {
     setModalMessage(<p>Are you sure you want to delete module {moduleName(targetModule)}?</p>);
     setModalActions(
       [
-        <OnHover>
-          <ToolTip key="ActionYes" message="Click to confirm deletion">
-            <ActionYes withText onClick={() => handleDelete(id)} />
-          </ToolTip>
-        </OnHover>,
-        <OnHover>
-          <ToolTip key="ActionNo" message="Click to abandon deletion">
-            <ActionNo withText onClick={() => dismissModal()} />
-          </ToolTip>
-        </OnHover>
+        <ToolTip key="ActionYes" message="Click to confirm deletion">
+          <ActionYes withText onClick={() => handleDelete(id)} />
+        </ToolTip>,
+        <ToolTip key="ActionNo" message="Click to abandon deletion">
+          <ActionNo withText onClick={() => dismissModal()} />
+        </ToolTip>
       ]
     );
   }
@@ -71,23 +66,18 @@ export default function MyModules() {
   const handleListAllModules = () => setModules(initialListOfModules);
   const handleListFavourites = () => setModules(modules.filter((module) => module.isSubscribed));
   
-
   // View ----------------------------------------
   return (
     <>
       <h1>My Modules</h1>
 
       <ActionTray>
-        <OnHover>
-          <ToolTip message="List favourite modules">
-            <ActionFavourites withText onClick={handleListFavourites} />
-          </ToolTip>
-        </OnHover>
-        <OnHover>
-          <ToolTip message="List all modules">
-            <ActionListAll withText onClick={handleListAllModules} />
-          </ToolTip>
-        </OnHover>
+        <ToolTip message="List favourite modules">
+          <ActionFavourites withText onClick={handleListFavourites} />
+        </ToolTip>
+        <ToolTip message="List all modules">
+          <ActionListAll withText onClick={handleListAllModules} />
+        </ToolTip>
       </ActionTray>
         
       <CardContainer>

@@ -10,7 +10,7 @@ export default function HoverDecorator({ children }) {
   // View ----------------------------------------
   return (
     <div
-      className="HoverDecorator"
+      className={"HoverDecorator" + (isHovering && " Hovering")}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

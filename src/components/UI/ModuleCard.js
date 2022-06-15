@@ -14,11 +14,11 @@ export default function ModuleCard({module,handlers}) {
   // View ----------------------------------------
   return (
     <HoverDecorator>
-      <FavouriteDecorator>
-        isFavourite={module.isSubscribed}
-        unFavourite={() => handlers.handleUnsubscribe(module.ModuleID)}
-      >
-        <Card>
+      <Card>
+        <FavouriteDecorator
+          isFavourite={module.isSubscribed}
+          unFavourite={() => handlers.handleUnsubscribe(module.ModuleID)}
+        />
         <div className="cardLayout">
 
           <div className="cardImage">
@@ -61,9 +61,9 @@ export default function ModuleCard({module,handlers}) {
               </HoverDecorator>
             </ActionTray>
           </div>
-          </div>
-        </Card>
-      </FavouriteDecorator>
+
+        </div>
+      </Card>
     </HoverDecorator>
   );
 }

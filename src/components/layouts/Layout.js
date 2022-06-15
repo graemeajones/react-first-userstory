@@ -4,7 +4,7 @@ import Footer from './Footer.js';
 import './Layout.css';
 
 
-export default function Layout(props) {
+export default function Layout({ children }) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Context -------------------------------------
@@ -16,7 +16,7 @@ export default function Layout(props) {
         <Header />
         <Navbar />
       </div>
-      <main className="Layout">{props.children}</main>
+      <main className="Layout">{children}</main>
       <Footer />
     </div>
   )
