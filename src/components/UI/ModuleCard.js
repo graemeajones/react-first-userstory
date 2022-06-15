@@ -1,5 +1,6 @@
-import OnHover from './OnHover.js';
-import { CardWithFavourite } from './Card.js';
+import HoverDecorator from './HoverDecorator.js';
+import FavouriteDecorator from './FavouriteDecorator.js';
+import { Card } from './Card.js';
 import ToolTip from './ToolTip.js';
 import { ActionTray, ActionSubscribe, ActionUnsubscribe, ActionModify, ActionDelete } from './Actions.js';
 import './ModuleCard.css';
@@ -12,11 +13,12 @@ export default function ModuleCard({module,handlers}) {
   // Methods -------------------------------------
   // View ----------------------------------------
   return (
-    <OnHover>
-      <CardWithFavourite
+    <HoverDecorator>
+      <FavouriteDecorator>
         isFavourite={module.isSubscribed}
         unFavourite={() => handlers.handleUnsubscribe(module.ModuleID)}
       >
+        <Card>
         <div className="cardLayout">
 
           <div className="cardImage">
@@ -35,32 +37,33 @@ export default function ModuleCard({module,handlers}) {
             <ActionTray>
               {module.isSubscribed
                 ?
-                <OnHover>
+                <HoverDecorator>
                   <ToolTip message="Click to remove module to favourites">
                     <ActionUnsubscribe onClick={() => handlers.handleUnsubscribe(module.ModuleID)} />
                   </ToolTip>
-                </OnHover>
+                </HoverDecorator>
                 :
-                <OnHover>
+                <HoverDecorator>
                   <ToolTip message="Click to add module to favourites">
                     <ActionSubscribe onClick={() => handlers.handleSubscribe(module.ModuleID)} />
                   </ToolTip>
-                </OnHover>
+                </HoverDecorator>
               }
-              <OnHover>
+              <HoverDecorator>
                 <ToolTip message="Click to modify module details">
                   <ActionModify onClick={handlers.handleModify} />
                 </ToolTip>
-              </OnHover>
-              <OnHover>
+              </HoverDecorator>
+              <HoverDecorator>
                 <ToolTip message="Delete module from list">
                   <ActionDelete onClick={() => handlers.handleDelete(module.ModuleID)} />
                 </ToolTip>
-              </OnHover>
+              </HoverDecorator>
             </ActionTray>
           </div>
-        </div>
-      </CardWithFavourite>
-    </OnHover>
+          </div>
+        </Card>
+      </FavouriteDecorator>
+    </HoverDecorator>
   );
 }
