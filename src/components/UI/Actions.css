@@ -5,7 +5,6 @@
 div.ActionTray {
   /* Appearance */
   margin: 0px;
-  padding: 10px;
 
   /* Layout */
   display: flex;
@@ -42,13 +41,13 @@ button.Action p { color: rgba(0,0,0,0.2); }
 
 /* Action appearance when ActionTray (or context) hovered */
 main.ModalPane:hover button.Action:not(:hover),
-div.Card.CardHover button.Action:not(:hover),
+div.Card.Hovering button.Action:not(:hover),
 div.ActionTray:hover button.Action:not(:hover) { border: 1px solid rgba(0,0,0,0.4); }
 main.ModalPane:hover button.Action:not(:hover) img,
-div.Card.CardHover button.Action:not(:hover) img,
+div.Card.Hovering button.Action:not(:hover) img,
 div.ActionTray:hover button.Action:not(:hover) img { filter: opacity(0.4); }
 main.ModalPane:hover button.Action:not(:hover) p,
-div.Card.CardHover button.Action:not(:hover) p,
+div.Card.Hovering button.Action:not(:hover) p,
 div.ActionTray:hover button.Action:not(:hover) p { color: rgba(0,0,0,0.4); }
 
 /* Action appearance hover over button */

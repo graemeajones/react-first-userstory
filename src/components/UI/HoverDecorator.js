@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function OnHover({ children }) {
+export default function HoverDecorator({ children }) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   const [isHovering, setIsHovering] = useState(false);
@@ -10,7 +10,7 @@ export default function OnHover({ children }) {
   // View ----------------------------------------
   return (
     <div
-      className="OnHover"
+      className={"HoverDecorator" + (isHovering && " Hovering")}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

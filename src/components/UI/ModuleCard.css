@@ -5,7 +5,7 @@
 div.cardLayout {
   font-size: 90%;
   width: 200px;
-  height: 260px;
+  height: 255px; 
 }
 
 div.cardLayout > div.cardImage {
@@ -39,7 +39,6 @@ div.cardLayout > div.cardDetails > p > span.cardAttribute::after {
 }
 
 div.cardLayout > div.cardActions {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
+  float: right;
+  padding-right: 10px;
 }

@@ -14,7 +14,12 @@ div.CardContainer {
   justify-content: center;
 }
 
-/* Card rulesets */
+div.CardContainer > div.HoverDecorator.Hovering {
+  /* Appearance */
+  border-radius: 5px;
+  box-shadow: 5px 10px 20px 4px rgba(70,70,70,0.5);
+  transform: translateY(-5px);
+}
 
 div.Card {
   /* Appearance */
@@ -23,32 +28,5 @@ div.Card {
   background: White;
   box-shadow: 4px 4px 8px 4px rgba(70,70,70,0.3);
   transition: all 0.25s ease;
-
-  /* Position: */
-  position: relative;
-}
-
-/* CardWithHover rulesets */
-
-div.Card.CardHover { 
-  position: relative;
-  transform: translateY(-5px);
-  box-shadow: 5px 10px 20px 4px rgba(70,70,70,0.5);
-} /* Don't use CSS hover, use React
-
-/* CardWithFavourite rulesets */
-
-div.Card > div.favourite {
-  /* Appearance */
-  font-size: 90%;
-
-  /* Position */
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-div.Card > div.favourite div.IconRedHeart {
-  width: 36px;
-  height: 36px;
+  position: static;
 }
