@@ -7,6 +7,7 @@ import Modal from '../UI/Modal.js';
 import initialListOfModules from '../../data/modules.js';
 import './MyModules.css';
 
+
 export default function MyModules() {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
@@ -100,3 +101,4 @@ export default function MyModules() {
     </>
   )
 }
+

@@ -1,5 +1,9 @@
+import PropTypes from 'prop-types';
 import './Card.css';
 
+CardContainer.propTypes = {
+  className: PropTypes.string
+};
 
 export function CardContainer({ children, className }) {
   return (
@@ -9,7 +13,12 @@ export function CardContainer({ children, className }) {
   );
 }
 
-export function Card({ children, onClick, isParentHovering }) {
+Card.propTypes = {
+  onClick: PropTypes.func,
+  isParentHovering: PropTypes.bool
+};
+
+export function Card({ children, onClick, isParentHovering=false }) {
   // Properties ----------------------------------
   // Hooks ---------------------------------------
   // Context -------------------------------------
