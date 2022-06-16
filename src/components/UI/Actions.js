@@ -1,9 +1,17 @@
+import PropTypes from 'prop-types';
 import { IconCross, IconList, IconPen, IconRedHeart, IconTick, IconTrash } from './Icons.js';
 import './Actions.css';
 
 // -----------------------------------------
 // Action Tray /////////////////////////////
 // -----------------------------------------
+
+ActionTray.propTypes = {
+  children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node
+  ]).isRequired
+}
 
 export function ActionTray({children}) {
   return (
@@ -17,7 +25,14 @@ export function ActionTray({children}) {
 // Actions /////////////////////////////////
 // -----------------------------------------
 
-export function ActionListAll({ onClick, withText }) {
+const ActionPropTypes = {
+  onClick: PropTypes.func.isRequired,
+  withText: PropTypes.bool
+};
+
+ActionListAll.propTypes = ActionPropTypes;
+
+export function ActionListAll({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconList /> {withText && <p>List all</p>}
@@ -25,7 +40,9 @@ export function ActionListAll({ onClick, withText }) {
   );
 }
 
-export function ActionClose({ onClick, withText }) {
+ActionClose.propTypes = ActionPropTypes;
+
+export function ActionClose({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconCross /> {withText && <p>Close</p>}
@@ -33,7 +50,9 @@ export function ActionClose({ onClick, withText }) {
   );
 }
 
-export function ActionDelete({ onClick, withText }) {
+ActionDelete.propTypes = ActionPropTypes;
+
+export function ActionDelete({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconTrash /> {withText && <p>Delete</p>}
@@ -41,7 +60,9 @@ export function ActionDelete({ onClick, withText }) {
   );
 }
 
-export function ActionFavourites({ onClick, withText }) {
+ActionFavourites.propTypes = ActionPropTypes;
+
+export function ActionFavourites({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconRedHeart /> {withText && <p>List favourites</p>}
@@ -49,7 +70,9 @@ export function ActionFavourites({ onClick, withText }) {
   );
 }
 
-export function ActionModify({ onClick, withText }) {
+ActionModify.propTypes = ActionPropTypes;
+
+export function ActionModify({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconPen /> {withText && <p>Modify</p>}
@@ -57,7 +80,9 @@ export function ActionModify({ onClick, withText }) {
   );
 }
 
-export function ActionNo({ onClick, withText }) {
+ActionNo.propTypes = ActionPropTypes;
+
+export function ActionNo({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconCross /> {withText && <p>No</p>}
@@ -65,7 +90,9 @@ export function ActionNo({ onClick, withText }) {
   );
 }
 
-export function ActionSubscribe({ onClick, withText }) {
+ActionSubscribe.propTypes = ActionPropTypes;
+
+export function ActionSubscribe({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconTick /> {withText && <p>Subscribe</p>}
@@ -73,7 +100,9 @@ export function ActionSubscribe({ onClick, withText }) {
   );
 }
 
-export function ActionYes({ onClick, withText }) {
+ActionYes.propTypes = ActionPropTypes;
+
+export function ActionYes({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconTick /> {withText && <p>Yes</p>}
@@ -81,7 +110,9 @@ export function ActionYes({ onClick, withText }) {
   );
 }
 
-export function ActionUnsubscribe({ onClick, withText }) {
+ActionUnsubscribe.propTypes = ActionPropTypes;
+
+export function ActionUnsubscribe({ onClick, withText=false }) {
   return (
     <button className="Action" onClick={onClick}>
       <IconCross /> {withText && <p>Unsubscribe</p>}

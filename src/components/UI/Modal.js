@@ -1,6 +1,12 @@
+import PropTypes from 'prop-types';
 import { Card } from './Card.js';
 import { ActionTray } from './Actions.js';
 import './Modal.css';
+
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired
+};
 
 
 export default function Modal({ title, children, actions }) {

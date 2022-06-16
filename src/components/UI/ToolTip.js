@@ -1,8 +1,14 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import useDimensions from 'react-use-dimensions';
 import HoverDecorator from './HoverDecorator.js';
 import { Card } from './Card.js';
 import './ToolTip.css';
+
+
+ToolTip.propTypes = {
+  message: PropTypes.string.isRequired
+};
 
 export default function ToolTip({ children, message }) {
   // Properies -----------------------------------
