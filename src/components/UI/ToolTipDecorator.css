@@ -2,7 +2,7 @@
 /* Styling //////////////////////////////////// */
 /* -------------------------------------------- */
 
-div.ToolTip div.AnnotationMessage {
+div.ToolTipDecorator div.AnnotationMessage {
   /* Appearance */
   min-width: 100px;
   padding: 5px;

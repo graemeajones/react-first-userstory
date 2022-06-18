@@ -3,20 +3,20 @@ import { useState } from 'react';
 import useDimensions from 'react-use-dimensions';
 import HoverDecorator from './HoverDecorator.js';
 import { Card } from './Card.js';
-import './ToolTip.css';
+import './ToolTipDecorator.css';
 
 
-ToolTip.propTypes = {
+ToolTipDecorator.propTypes = {
   message: PropTypes.string.isRequired
 };
 
-export default function ToolTip({ children, message }) {
+export default function ToolTipDecorator({ children, message }) {
   // Properies -----------------------------------
   // Hooks ---------------------------------------
   // Methods -------------------------------------
   // View ----------------------------------------
   return (
-    <div className="ToolTip">
+    <div className="ToolTipDecorator">
       <HoverDecorator>
         {children}
         <Annotator message={message} />
@@ -52,6 +52,8 @@ function Annotator({message, isParentHovering }) {
   // View ----------------------------------------
   if (isParentHovering && !isAnnotated) startAnnotation();
   if (!isParentHovering && isAnnotated) clearAnnotation();
+
+  // This computes the offset to align the button and the tooltip below it
   const renderOffset = 0.5 * (dimTarget.width - dimMessage.width);
 
   return (

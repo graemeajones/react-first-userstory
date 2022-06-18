@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import HoverDecorator from './HoverDecorator.js';
 import FavouriteDecorator from './FavouriteDecorator.js';
 import { Card } from './Card.js';
-import ToolTip from './ToolTip.js';
+import ToolTipDecorator from './ToolTipDecorator.js';
 import { ActionTray, ActionSubscribe, ActionUnsubscribe, ActionModify, ActionDelete } from './Actions.js';
 import './ModuleCard.css';
 
@@ -54,19 +54,19 @@ export default function ModuleCard({module,handlers}) {
           <div className="cardActions">
             <ActionTray>
               {module.isSubscribed
-                ? <ToolTip message="Click to remove module to favourites">
+                ? <ToolTipDecorator message="Click to remove module to favourites">
                     <ActionUnsubscribe onClick={() => handlers.handleUnsubscribe(module.ModuleID)} />
-                  </ToolTip>
-                : <ToolTip message="Click to add module to favourites">
+                  </ToolTipDecorator>
+                : <ToolTipDecorator message="Click to add module to favourites">
                     <ActionSubscribe onClick={() => handlers.handleSubscribe(module.ModuleID)} />
-                  </ToolTip>
+                  </ToolTipDecorator>
               }
-              <ToolTip message="Click to modify module details">
+              <ToolTipDecorator message="Click to modify module details">
                 <ActionModify onClick={handlers.handleModify} />
-              </ToolTip>
-              <ToolTip message="Delete module from list">
+              </ToolTipDecorator>
+              <ToolTipDecorator message="Delete module from list">
                 <ActionDelete onClick={() => handlers.handleDelete(module.ModuleID)} />
-              </ToolTip>
+              </ToolTipDecorator>
             </ActionTray>
           </div>
 
