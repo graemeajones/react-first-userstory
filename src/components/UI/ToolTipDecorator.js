@@ -5,6 +5,8 @@ import HoverDecorator from './HoverDecorator.js';
 import { Card } from './Card.js';
 import './ToolTipDecorator.css';
 
+import RenderCount from './RenderCount.js';
+
 
 ToolTipDecorator.propTypes = {
   message: PropTypes.string.isRequired
@@ -13,24 +15,30 @@ ToolTipDecorator.propTypes = {
 export default function ToolTipDecorator({ children, message }) {
   // Properies -----------------------------------
   // Hooks ---------------------------------------
+  const [refParent, dimParent] = useDimensions();
+  
   // Methods -------------------------------------
   // View ----------------------------------------
-  return (
-    <div className="ToolTipDecorator">
+    return (
+    <div className="ToolTipDecorator" ref={refParent}>
       <HoverDecorator>
         {children}
-        <Annotator message={message} />
+        <ToolTip message={message} width={dimParent.width} />
       </HoverDecorator>
     </div>
   );
 }
 
-function Annotator({message, isParentHovering }) {
+ToolTip.propTypes = {
+  message: PropTypes.string.isRequired,
+  isParentHovering: PropTypes.bool
+};
+
+function ToolTip({message, width: parentWidth, isParentHovering }) {
   // Properies -----------------------------------
   // Hooks ---------------------------------------
-  const [isAnnotated, setIsAnnotated] = useState(false); 
-  const [refAnnotationTarget, dimTarget] = useDimensions();
-  const [refAnnotationMessage, dimMessage] = useDimensions();
+  const [isAnnotated, setIsAnnotated] = useState(false);
+  const [refChild, dimChild] = useDimensions();
 
   // Methods -------------------------------------
   let startTimer; // Don't start annotation straight away
@@ -54,23 +62,25 @@ function Annotator({message, isParentHovering }) {
   if (!isParentHovering && isAnnotated) clearAnnotation();
 
   // This computes the offset to align the button and the tooltip below it
-  const renderOffset = 0.5 * (dimTarget.width - dimMessage.width);
+  const toolTipMinWidth = 100;
+  const renderOffset =
+    dimChild.width
+      ? 0.5 * (parentWidth - dimChild.width)
+      : parentWidth > toolTipMinWidth
+        ? 0
+        : 0.5 * (parentWidth - toolTipMinWidth);
 
   return (
-    <div className="AnnotationTarget" ref={refAnnotationTarget}>
-      {
-        isAnnotated && (
-          <Card>
-            <div
-              className="AnnotationMessage"
-              ref={refAnnotationMessage}
-              style={{ transform: `translate(${renderOffset}px,3px)` }}
-            >
-              <p>{ message }</p>
-            </div>
-          </Card>
-        )
-      }
-    </div>
+    isAnnotated &&
+      <Card>
+        <div
+          className="ToolTip"
+          ref={refChild}
+          style={{ transform: `translate(${renderOffset}px,3px)` }}
+        >
+          <RenderCount background="Red" />
+          <p>{ message }</p>
+        </div>
+      </Card>
   );
 }

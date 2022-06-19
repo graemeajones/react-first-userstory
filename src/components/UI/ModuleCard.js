@@ -6,6 +6,8 @@ import ToolTipDecorator from './ToolTipDecorator.js';
 import { ActionTray, ActionSubscribe, ActionUnsubscribe, ActionModify, ActionDelete } from './Actions.js';
 import './ModuleCard.css';
 
+//import RenderCount from '../UI/RenderCount.js';
+
 
 ModuleCard.propTypes = {
   module: PropTypes.shape({
@@ -30,13 +32,16 @@ export default function ModuleCard({module,handlers}) {
   // Context -------------------------------------
   // Methods -------------------------------------
   // View ----------------------------------------
+
   return (
     <HoverDecorator>
       <Card>
+
         <FavouriteDecorator
           isFavourite={module.isSubscribed}
           unFavourite={() => handlers.handleUnsubscribe(module.ModuleID)}
         />
+
         <div className="cardLayout">
 
           <div className="cardImage">
@@ -71,6 +76,7 @@ export default function ModuleCard({module,handlers}) {
           </div>
 
         </div>
+
       </Card>
     </HoverDecorator>
   );

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { IconCross, IconList, IconPen, IconRedHeart, IconTick, IconTrash } from './Icons.js';
 import './Actions.css';
 
+
 // -----------------------------------------
 // Action Tray /////////////////////////////
 // -----------------------------------------
