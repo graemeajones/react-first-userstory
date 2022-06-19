@@ -1,10 +1,7 @@
 import { useRef } from 'react';
 import Badge from './Badge.js';
 
-const renderCountStyling = {
-  color: "White",
-  position: "relative"
-};
+const renderCountStyling = { position: "relative" };
 
 export default function RenterCount({background}) {
   // Properies -----------------------------------

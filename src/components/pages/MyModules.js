@@ -7,8 +7,6 @@ import Modal from '../UI/Modal.js';
 import initialListOfModules from '../../data/modules.js';
 import './MyModules.css';
 
-import RenderCount from '../UI/RenderCount.js';
-
 
 export default function MyModules() {
   // Properties ----------------------------------
@@ -74,9 +72,7 @@ export default function MyModules() {
       <h1>My Modules</h1>
 
       <ActionTray>
-        <RenderCount background="Cyan" />
         <ToolTipDecorator message="List favourite modules">
-          <RenderCount background="Green" />
           <ActionFavourites showText onClick={handleListFavourites} />
         </ToolTipDecorator>
         <ToolTipDecorator message="List all modules">
