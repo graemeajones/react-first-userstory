@@ -2,7 +2,7 @@
 /* Styling //////////////////////////////////// */
 /* -------------------------------------------- */
 
-div.ToolTipDecorator div.AnnotationMessage {
+div.ToolTipDecorator div.ToolTip {
   /* Appearance */
   min-width: 100px;
   padding: 5px;
@@ -13,5 +13,5 @@ div.ToolTipDecorator div.AnnotationMessage {
   background: #29e7cd;
 }
 
-div.AnnotationTarget { position: relative; }
-div.AnnotationMessage { position: absolute; }
+div.ToolTipDecorator { position: relative; }
+div.ToolTip { position: absolute; }
