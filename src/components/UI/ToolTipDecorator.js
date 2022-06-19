@@ -5,8 +5,6 @@ import HoverDecorator from './HoverDecorator.js';
 import { Card } from './Card.js';
 import './ToolTipDecorator.css';
 
-import RenderCount from './RenderCount.js';
-
 
 ToolTipDecorator.propTypes = {
   message: PropTypes.string.isRequired
@@ -20,12 +18,12 @@ export default function ToolTipDecorator({ children, message }) {
   // Methods -------------------------------------
   // View ----------------------------------------
     return (
-    <div className="ToolTipDecorator" ref={refParent}>
-      <HoverDecorator>
-        {children}
-        <ToolTip message={message} width={dimParent.width} />
-      </HoverDecorator>
-    </div>
+      <div className="ToolTipDecorator" ref={refParent}>
+        <HoverDecorator>
+          {children}
+          <ToolTip message={message} width={dimParent.width} />
+        </HoverDecorator>
+      </div>
   );
 }
 
@@ -37,31 +35,23 @@ ToolTip.propTypes = {
 function ToolTip({message, width: parentWidth, isParentHovering }) {
   // Properies -----------------------------------
   // Hooks ---------------------------------------
-  const [isAnnotated, setIsAnnotated] = useState(false);
+  const [annotationStatus, setAnnotationStatus] = useState("NOT_SHOWN");
   const [refChild, dimChild] = useDimensions();
 
   // Methods -------------------------------------
-  let startTimer; // Don't start annotation straight away
-  let stopTimer; // Clear lingering annotation!
   const delayStartOfAnnotation = 333; // i.e. millisecs
   const maxDurationOfAnnotation = 2000; // i.e. two seconds
 
   const startAnnotation = () => {
-    startTimer = setTimeout( () => setIsAnnotated(true), delayStartOfAnnotation );
-    stopTimer = setTimeout( () => setIsAnnotated(false), maxDurationOfAnnotation );
-  }
-
-  const clearAnnotation = () => {
-    clearTimeout(startTimer);
-    clearTimeout(stopTimer);
-    setIsAnnotated(false);
+    setTimeout( () => setAnnotationStatus("SHOWING"), delayStartOfAnnotation ); // Don't start annotation straight away
+    setTimeout( () => setAnnotationStatus("SHOWN"), maxDurationOfAnnotation ); // Limit the annotation!
   }
 
   // View ----------------------------------------
-  if (isParentHovering && !isAnnotated) startAnnotation();
-  if (!isParentHovering && isAnnotated) clearAnnotation();
-
-  // This computes the offset to align the button and the tooltip below it
+  if (isParentHovering && (annotationStatus==="NOT_SHOWN")) startAnnotation();
+  if (!isParentHovering && (annotationStatus!=="NOT_SHOWN")) setAnnotationStatus("NOT_SHOWN")
+  
+  // Computes the offset to horizontally align the button and tooltip; initially we are not sure of the width so use minimum
   const toolTipMinWidth = 100;
   const renderOffset =
     dimChild.width
@@ -71,15 +61,14 @@ function ToolTip({message, width: parentWidth, isParentHovering }) {
         : 0.5 * (parentWidth - toolTipMinWidth);
 
   return (
-    isAnnotated &&
+    (annotationStatus === "SHOWING") &&
       <Card>
         <div
           className="ToolTip"
           ref={refChild}
           style={{ transform: `translate(${renderOffset}px,3px)` }}
         >
-          <RenderCount background="Red" />
-          <p>{ message }</p>
+          <p>{message}</p>
         </div>
       </Card>
   );
